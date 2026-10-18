@@ -75,7 +75,7 @@ prepare_bakasu() {
     # BakaSU Kbuild insists on a real git checkout, so link the repo in
     ln -sfn "../$KSU_DIR/kernel" drivers/kernelsu
 
-    grep -q "kernelsu" drivers/Makefile || echo "obj-$(CONFIG_KSU) += kernelsu/" >> drivers/Makefile
+    grep -q "drivers/kernelsu" drivers/Makefile || echo 'obj-$(CONFIG_KSU) += kernelsu/' >> drivers/Makefile
     grep -q "drivers/kernelsu/Kconfig" drivers/Kconfig || \
         sed -i 's|^endmenu|source "drivers/kernelsu/Kconfig"\nendmenu|' drivers/Kconfig
 
